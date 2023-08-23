@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+
+<project name="JavaBank" basedir="." default="jarfile">
+
+    <target name="init" description="Initializes properties">
+        <property name="project.name" value="JavaBank" />
+        <property name="src.dir" value="src" />
+        <property name="build.dir" value="build" />
+        <property name="classes.dir" value="${build.dir}/classes" />
+        <property name="main.class" value="io.codeforall.thestudio.ioBank.Main" />
+        <property name="external.build.dir" value="/srv/http/cgi-bin/javabank" />
+    </target>
+
+    <target name="prepare" description="Creates the build and classes directories" depends="init">
+        <mkdir dir="${classes.dir}" />
+    </target>
+
+    <target name="compile" description="Compiles the code" depends="prepare">
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${classes.dir}">
+        </javac>
+    </target>
+
+    <!-- set write permissions for the JAR file -->
+    <target name="set-permissions" depends="compile">
+        <exec executable="sudo">
+            <arg value="chmod"/>
+            <arg value="ugo+w"/>
+            <arg value="/srv/http/cgi-bin/javabank"/>
+        </exec>
+    </target>
+
+    <target name="jarfile" description="Archives the code" depends="set-permissions">
+        <jar destfile="${external.build.dir}/${project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="clean" description="Clean up" depends="init">
+        <delete dir="${build.dir}" />
+    </target>
+
+</project>

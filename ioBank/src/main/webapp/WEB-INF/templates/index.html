@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styling/styles.css">
+    <title>IO bank</title>
+
+</head>
+<body>
+<div id="navbar" class="navbar">
+    <div id="navbar1" class="navbar1">
+
+        <ul>
+            <li>home</li>
+            <li class="highlighted">clients</li>
+            <li>loans</li>
+            <li>assistance</li>
+        </ul>
+    </div>
+    <div id="navbar2" class="navbar2">
+    </div>
+</div>
+
+<main>
+    <div id="left-margin"></div>
+
+    <div class="all-rectangles">
+
+        <a href="new-client">
+            <div class="rectangle">
+                <div id="add-box">
+                    <h1>+</h1>
+                </div>
+            </div>
+        </a>
+
+
+        <a th:each="customerDTO : ${customerDTOs}" th:href="'get/customerId=' +${customerDTO.getId}">
+            <div class="rectangle">
+                <div id="img">
+                    <img src="assets/clients-profile-pictures/client_pic.jpg" alt="client_pic" class="images"/>
+                </div>
+                <div id="details">
+                    <h2 th:text="${customerDTO.firstName + ' ' + customerDTO.lastName}"></h2>
+                    <div id="details2">
+                        <h3>no. </h3>
+                        <h4 th:text="${customerDTO.getId()}"></h4>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+    <div id="right-margin"></div>
+
+</main>
+
+<footer>
+    <div>
+
+    </div>
+</footer>
+</body>
+</html>

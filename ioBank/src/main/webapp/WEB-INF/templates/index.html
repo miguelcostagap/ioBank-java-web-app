@@ -1,67 +1,73 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styling/styles.css">
-    <title>IO bank</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javabank</title>
 
+    <link rel="stylesheet" href="/javabank/style/style.css" type="text/css">
+    
 </head>
-<body>
-<div id="navbar" class="navbar">
-    <div id="navbar1" class="navbar1">
+<body class="homepage">
 
-        <ul>
-            <li>home</li>
-            <li class="highlighted">clients</li>
-            <li>loans</li>
-            <li>assistance</li>
-        </ul>
+    <div th:if="${lastAction}" class="custom-alert success" role="alert">
+        <strong>Action:</strong> <span th:text="${lastAction}">last action performed</span>
     </div>
-    <div id="navbar2" class="navbar2">
+
+    <div th:if="${failure}" class="custom-alert danger" role="alert">
+        <strong>Warning:</strong> <span th:text="${failure}">last action performed</span>
     </div>
-</div>
 
-<main>
-    <div id="left-margin"></div>
+<div class="container">
 
-    <div class="all-rectangles">
 
-        <a href="new-client">
-            <div class="rectangle">
-                <div id="add-box">
-                    <h1>+</h1>
+    <div class="header">
+        <h1>Customer list</h1>
+        <a th:href="@{'add'}" class="btn CTA">Add new</a>
+    </div>
+
+    <div class="card-container">
+        <div th:each="customer : ${customers}" class="card">
+            <div class="avatar"
+                 th:style="'background-image: url(\'' + '/javabank/assets/profile_pictures/' + ${customer.photoURL} + '\')'"></div>
+
+            <div class="content">
+                <div class="card-header">
+                    <div class="title">
+                        <h2 th:text="${customer.firstName + ' ' + customer.lastName}"></h2>
+                    </div>
+                    <div class="btn-container">
+                        <a th:href="@{'/customer/' + ${customer.id}}" class="btn">View account</a>
+                        <a th:href="@{'/customer/' + ${customer.id} + '/edit'}" class="btn">Edit</a>
+                        <a th:href="@{'/customer/' + ${customer.id} + '/delete'}" class="btn">Delete</a>
+
+                    </div>
                 </div>
-            </div>
-        </a>
-
-
-        <a th:each="customerDTO : ${customerDTOs}" th:href="'get/customerId=' +${customerDTO.getId}">
-            <div class="rectangle">
-                <div id="img">
-                    <img src="assets/clients-profile-pictures/client_pic.jpg" alt="client_pic" class="images"/>
-                </div>
-                <div id="details">
-                    <h2 th:text="${customerDTO.firstName + ' ' + customerDTO.lastName}"></h2>
-                    <div id="details2">
-                        <h3>no. </h3>
-                        <h4 th:text="${customerDTO.getId()}"></h4>
+                <div class="card-details-container">
+                    <div class="card-detail">
+                        <h5>Phone number</h5>
+                        <h4 th:text="${customer.phone}"></h4>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Email</h5>
+                        <h4 th:text="${customer.email}"></h4>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Number of accounts</h5>
+                        <h4 th:text="${customer.numOfAccounts} + ' active accounts'"></h4>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Accounts total</h5>
+                        <h4 th:text="${customer.balance}"></h4>
                     </div>
                 </div>
             </div>
-        </a>
 
+        </div>
     </div>
 
-    <div id="right-margin"></div>
+</div>
 
-</main>
-
-<footer>
-    <div>
-
-    </div>
-</footer>
 </body>
 </html>

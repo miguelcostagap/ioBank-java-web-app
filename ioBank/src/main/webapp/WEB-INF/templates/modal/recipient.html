@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:id="'modal-recipient'" class="modal operations-container add-recipient" th:fragment="modal">
+    <div class="profile-panel">
+        <form class="details-container" th:object="${recipient}"
+              th:action="@{/customer/} + ${customer.id} + '/recipient'" th:method="post">
+            <article>
+                <h1>Create Recipient</h1>
+                <div class="details">
+                    <div class="card-detail">
+                        <h5>Account Number</h5>
+                        <input type="text" th:field="*{accountNumber}" required/>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Name</h5>
+                        <input type="text" th:field="*{name}" required>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Description</h5>
+                        <input type="text" th:field="*{description}" required>
+                    </div>
+                    <input type="hidden" th:field="*{id}">
+                </div>
+            </article>
+            <article>
+                <div class="btn-container fullwidth">
+                    <a th:href="@{/customer/} + ${customer.id}" class="btn ghost">Cancel</a>
+                    <button type="submit" class="btn CTA">Submit</button>
+                </div>
+            </article>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

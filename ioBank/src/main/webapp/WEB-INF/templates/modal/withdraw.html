@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div th:id="'modal-withdraw-'+ ${account.id}" class="modal operations-container" th:fragment="modal">
+
+  <div class="profile-panel">
+    <form class="details-container" th:object="${transaction}" th:action="@{/customer/} + ${customer.id} + '/withdraw'" th:method="post">
+      <article>
+        <h1>Withdraw</h1>
+        <div class="details">
+          <div class="card-detail">
+            <h5>Amount</h5>
+            <input type="text" th:field="*{amount}" pattern="[0-9]+(.[0-9]+)?" title="Please enter a valid number."/>
+          </div>
+
+          <input type="hidden" name="id" th:value="${account.id}">
+        </div>
+        <h4>Account Info</h2>
+          <hr>
+          <table class="table">
+            <tr>
+              <td>Account ID:</td>
+              <td th:text="${account.id}"></td>
+            </tr>
+            <tr>
+              <td>Account Type: </td>
+              <td th:text="${account.accountType}"></td>
+            </tr>
+            <tr>
+              <td>Current Balance: </td>
+              <td th:text="${account.balance}"></td>
+            </tr>
+          </table>
+      </article>
+      <article>
+        <div class="btn-container fullwidth">
+          <a th:href="@{/customer/} + ${customer.id}"  class="btn ghost">Cancel</a>
+          <button type="submit" class="btn CTA">Submit</button>
+        </div>
+      </article>
+    </form>
+  </div>
+</div>
+</body>
+</html>

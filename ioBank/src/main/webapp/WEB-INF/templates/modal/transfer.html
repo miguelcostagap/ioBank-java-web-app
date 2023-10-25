@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:id="'modal-transfer'" class="modal operations-container transfer" th:fragment="modal">
+    <div class="profile-panel">
+        <form class="details-container" th:object="${transfer}"
+              th:action="@{/customer/} + ${customer.id} + '/transfer'" th:method="post">
+            <article>
+                <h1>Transfer</h1>
+                <div class="details">
+                    <div class="card-detail">
+                        <h5>Source Account ID</h5>
+                        <input type="text" th:field="*{srcId}"/>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Destination Account ID</h5>
+                        <input type="text" th:field="*{dstId}"/>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Amount</h5>
+                        <input type="text" th:field="*{amount}"/>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <div class="btn-container fullwidth">
+                    <a th:href="@{/customer/} + ${customer.id}" class="btn ghost">Cancel</a>
+                    <button type="submit" class="btn CTA">Submit</button>
+                </div>
+            </article>
+        </form>
+    </div>
+</div>
+</body>
+</html>

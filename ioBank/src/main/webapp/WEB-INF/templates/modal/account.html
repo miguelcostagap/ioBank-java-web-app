@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:id="'modal-account'" class="modal operations-container add-account" th:fragment="modal">
+
+    <div class="profile-panel">
+        <form class="details-container" th:object="${account}" th:action="@{/customer/} + ${customer.id} + '/account'" th:method="post">
+            <article>
+                <h1>Create Account</h1>
+                <div class="details">
+                    <div class="card-detail">
+                        <h5>Account Type</h5>
+                        <select th:field="*{accountType}">
+                            <option value="SAVINGS">Savings Account</option>
+                            <option value="CHECKING">Checking Account</option>
+                        </select>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Account Balance</h5>
+                        <input type="text" th:field="*{balance}" required pattern="[0-9]+(.[0-9]+)?" title="Please enter a valid number.">
+                    </div>
+                    <input type="hidden" th:field="*{id}">
+                </div>
+            </article>
+            <article>
+                <div class="btn-container fullwidth">
+                    <a th:href="@{/customer/} + ${customer.id}"class="btn ghost">Cancel</a>
+                    <button type="submit" class="btn CTA">Submit</button>
+                </div>
+            </article>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

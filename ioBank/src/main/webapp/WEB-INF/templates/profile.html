@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>thestudIO</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javabank</title>
+
+    <link rel="stylesheet" href="/javabank/style/style.css" type="text/css">
+
+
+</head>
+<body class="profile">
+
+    <div th:if="${lastAction}" class="custom-alert success" role="alert">
+        <strong>Action:</strong> <span th:text="${lastAction}">last action performed</span>
+    </div>
+
+    <div th:if="${failure}" class="custom-alert danger" role="alert">
+        <strong>Warning:</strong> <span th:text="${failure}">last action performed</span>
+    </div>
+
+<div class="profile-container">
+
+    <div class="profile-panel">
+        <a href="/javabank/" class="btn go-back"><img src="/javabank/assets/arrow-left.svg"/>Go back</a>
+        <div class="profile-header">
+            <div class="avatar"
+                 th:style="'background-image: url(\'' + '/javabank/assets/profile_pictures/' + ${customer.photoURL} + '\')'"></div>
+            <div class="content">
+                <h2 th:text="${customer.firstName + ' ' + customer.lastName}"></h2>
+            </div>
+        </div>
+        <div class="details-container">
+            <article>
+                <h3>Personal details</h3>
+                <div class="details">
+                    <div class="card-detail">
+                        <h5>Phone number</h5>
+                        <h4 th:text="${customer.phone}"></h4>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Email</h5>
+                        <h4 th:text="${customer.email}"></h4>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h3>Account info</h3>
+                <div class="details">
+                    <div class="card-detail">
+                        <h5>Number of accounts</h5>
+                        <h4 th:text="${accounts.size()} + ' active accounts'"></h4>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Accounts total</h5>
+                        <h4 th:text="${customer.balance}"></h4>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="list-container">
+        <div class="account-container">
+            <div class="header">
+                <h1>Accounts list</h1>
+                <div class="btn-container">
+                    <a th:href="@{'#modal-transfer'}" class="btn">Transfer</a>
+                    <a th:href="@{'#modal-account'}" class="btn CTA">New Account</a>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Balance</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="account : ${accounts}">
+                    <th th:text="${account.id}"></th>
+                    <th th:text="${account.balance}"></th>
+                    <th>
+                        <div class="tag" th:class="${account.accountType}"><span
+                                th:text="${account.accountType}"></span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="btn-container">
+                            <a th:href="@{'#modal-deposit-' + ${account.id}}" class="btn CTA">Deposit</a>
+                            <div th:replace="modal/deposit :: modal">
+                            </div>
+                            <a th:href="@{'#modal-withdraw-' + ${account.id}}" class="btn">Withdraw</a>
+                            <div th:replace="modal/withdraw :: modal">
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="account-container">
+            <div class="header">
+                <h1>Recipients list</h1>
+                <div class="btn-container">
+                    <a th:href="@{'#modal-recipient'}" class="btn">Add Recipient</a>
+                </div>
+            </div>
+            <table class="recipient-table">
+                <thead>
+                <tr>
+                    <th>Account Number</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="recipient : ${recipients}">
+                    <th th:text="${recipient.accountNumber}"></th>
+                    <th th:text="${recipient.name}"></th>
+                    <th th:text="${recipient.description}"></th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:replace="modal/recipient :: modal">
+</div>
+<div th:replace="modal/transfer :: modal">
+</div>
+<div th:replace="modal/account :: modal">
+</div>
+
+
+</body>
+</html>

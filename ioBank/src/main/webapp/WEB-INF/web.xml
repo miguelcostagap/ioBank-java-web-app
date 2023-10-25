@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0">
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
 
-    <display-name>ioBank</display-name>
+    <display-name>javabank</display-name>
 
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
@@ -13,6 +14,16 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>WEB-INF/spring/spring-config.xml</param-value>
         </init-param>
+        <multipart-config>
+            <!-- Temporary location to store uploaded files -->
+            <location>/tmp</location>
+            <!-- Max file size (in bytes) -->
+            <max-file-size>10000000</max-file-size>
+            <!-- Max request size (in bytes) -->
+            <max-request-size>10000000</max-request-size>
+            <!-- File size threshold for writing to disk (in bytes) -->
+            <file-size-threshold>0</file-size-threshold>
+        </multipart-config>
     </servlet>
 
     <servlet-mapping>
@@ -20,6 +31,29 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+    </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.svg</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>spring.profiles.active</param-name>
+        <param-value>dev</param-value>
+    </context-param>
 
 </web-app>

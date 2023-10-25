@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <import resource="persistence.xml"/>
+
+    <!-- Use spring servlet for all requests, including static resources -->
     <mvc:default-servlet-handler/>
 
+    <!-- User @Controller, @Service annotations -->
     <mvc:annotation-driven/>
 
-    <context:component-scan base-package="io.codeforall.thestudio.ioBank"/>
+    <!-- Base package to search for spring beans -->
+    <context:component-scan base-package="io.codeforall.thestudio.javabank"/>
 
     <bean id="viewResolver" class="org.thymeleaf.spring6.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine"/>
@@ -16,6 +21,7 @@
         <property name="contentType" value="text/html; charset=UTF-8"/>
     </bean>
 
+    <!-- Thymeleaf Template Engine (Spring4-specific version) -->
     <bean id="templateEngine" class="org.thymeleaf.spring6.SpringTemplateEngine">
         <property name="templateResolvers">
             <set>
@@ -24,6 +30,7 @@
         </property>
     </bean>
 
+    <!-- Thymeleaf template resolver -->
     <bean id="templateResolver" class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
         <property name="prefix" value="/WEB-INF/templates/"/>
         <property name="suffix" value=".html"/>
@@ -32,7 +39,6 @@
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
-    <bean id="accountFactory" class="io.codeforall.thestudio.ioBank.factories.AccountFactory">
-    </bean>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
 
 </beans>

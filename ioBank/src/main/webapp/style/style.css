@@ -1,0 +1,756 @@
+/* ---------- NORMALIZE ---------- */
+
+.profile-container .list-container .account-container table.table th {
+    border: 0;
+    border-bottom: 0;
+    border-top: 0;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.modal {
+    display: none;
+}
+
+.modal:target {
+    display: block;
+}
+
+
+/* ---------- ALL PAGES ---------- */
+
+body {
+    background: lightgray;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 26px;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 12px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.btn {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    border: none;
+    color: #3C53CF;
+    background: #EBEEFA;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background: #c6d0f0;
+    transition: all 0.2s;
+}
+
+.btn.CTA {
+    color: white;
+    background: #3C53CF;
+    transition: all 0.2s;
+}
+
+.btn.CTA:hover {
+    background: #272789;
+    transition: all 0.2s;
+}
+
+.btn.ghost {
+    color: #3C53CF;
+    background: none;
+    transition: all 0.2s;
+}
+
+.btn.ghost:hover {
+    background: #c6d0f0;
+    transition: all 0.2s;
+}
+
+.btn.go-back {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 30px;
+    margin-bottom: 40px;
+    padding-right: 20px;
+}
+
+.card-detail h5 {
+    opacity: 0.5;
+    margin-bottom: 6px;
+}
+
+.avatar {
+    width: 100%;
+    max-width: 130px;
+    height: 160px;
+    background-size: cover;
+    border-radius: 8px;
+}
+
+.custom-alert {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    animation-duration: 5s; /* Adjust the duration as needed */
+    animation-name: fadeOut;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    opacity: 1;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+
+/* ---------- HOMEPAGE ------------- */
+
+.homepage {
+    background: 
+        linear-gradient(112.64deg, #EBEFFB 0.33%, #DAD5EE 100%),
+        linear-gradient(0deg, #F7F9FE, #F7F9FE)
+    ;
+    padding: 0px 40px;
+}
+
+.homepage .container {
+    padding-top: 80px;
+    padding-bottom: 160px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.card {
+    margin-top: 40px;
+    max-width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 30px;
+    background: white;
+    box-shadow: 
+        0px 8px 16px rgba(0, 0, 0, 0.06), 
+        0px 4px 8px rgba(0, 0, 0, 0.06), 
+        0px 2px 4px rgba(0, 0, 0, 0.06)
+    ;
+    border-radius: 18px;
+    transition: all 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    transition: all 0.2s;
+}
+
+.card .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 10px 10px 0px;
+}
+
+.card .content .card-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card .content .card-header .btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.card .content .card-details-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 60px;
+}
+
+/* ---------- PROFILE ------------- */
+
+.profile {
+    background: 
+        linear-gradient(112.64deg, #EBEFFB 0.33%, #DAD5EE 100%),
+        linear-gradient(0deg, #F7F9FE, #F7F9FE)
+    ;
+}
+
+.profile-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    min-height: 100vh;
+}
+
+.profile-panel {
+    background: white;
+    padding: 40px;
+    max-width: 540px;
+}
+
+.profile-panel .profile-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+}
+
+.profile-panel .profile-header .btn-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-panel .details-container {
+    margin-top: 40px;
+}
+
+.profile-panel .details-container article {
+    margin-top: 60px;
+}
+
+.profile-panel .details-container article h3 {
+    margin-bottom: 20px;
+}
+
+.profile-panel .details-container .details {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+}
+
+
+.account-container {
+    padding: 80px;
+}
+
+.account-container .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.account-container .header .btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-container .table {
+    width: 100%;
+    background: white;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 8px;
+}
+
+.account-container .table .tag {
+    display: inline-block;
+    border-radius: 10px;
+    color: rgba(0, 0, 0, 0.7);
+    padding: 4px 10px;
+    font-size: 11px;
+    line-height: 11px;
+    text-transform: uppercase;
+}
+
+.account-container .table .tag.checking { background: #E5D7A2; }
+.account-container .table .tag.pension { background: #E5A2AA; }
+.account-container .table .tag.savings { background: #A2E5CD; }
+
+.account-container .table tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    counter-increment: row-num;
+}
+
+.account-container .table tbody {
+    counter-reset: row-num;
+}
+
+.account-container .table tbody tr {
+    counter-increment: row-num;
+}
+
+
+.account-container .table tr th {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+.account-container .table tr th:nth-child(1) {
+    max-width: 100px;
+    text-align: center;
+}
+
+
+
+.account-container .table tbody tr th:last-child(1)::before {
+    content: "";
+}
+
+.account-container .table tr th:last-child {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.account-container .table tr th .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-container .table tr {
+    padding: 14px 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.account-container .table thead tr {
+    border-top: none;
+}
+
+.account-container .table tfoot tr {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.account-container .table thead {
+    padding: 16px 0px;
+}
+
+.account-container .table thead th {
+    font-size: 12px;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-container .recipient-table {
+    width: 100%;
+    background: white;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 8px;
+}
+
+
+.account-container .recipient-table tr {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    counter-increment: row-num;
+}
+
+.account-container .recipient-table tbody {
+    counter-reset: row-num;
+}
+
+.account-container .recipient-table tbody tr {
+    counter-increment: row-num;
+}
+
+
+.account-container .recipient-table tr th {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.account-container .recipient-table tr {
+    padding: 14px 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.account-container .recipient-table thead tr {
+    border-top: none;
+}
+
+.account-container .recipient-table tfoot tr {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.account-container .recipient-table thead {
+    padding: 16px 0px;
+}
+
+.account-container .recipient-table thead th {
+    font-size: 16px;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+
+/* ---------- EDIT PAGE ---------------*/
+
+.edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+}
+
+.edit-container .profile-panel {
+    width: 100%;
+    max-width: 400px;
+}
+
+.edit-container .btn-container.fullwidth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-panel .details-container article {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.profile-panel .details-container {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.edit-container .profile-panel .details-container .details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;    
+}
+
+.edit-container .profile-panel .details-container .details .card-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
+.edit-container .profile-panel .details-container .details .card-detail input {
+    width: 100%;
+    padding: 10px;
+    background: #c6d0f03c;
+    border: none;
+    border-radius: 8px;
+    color: #3C53CF;
+}
+
+.edit-container .profile-panel .details-container .details .card-detail input:focus {
+    width: 100%;
+    padding: 10px;
+    background: #c6d0f0;
+    border: none;
+    border-radius: 8px;
+    color: #3C53CF;
+}
+
+.upload-photo-container {
+    position: absolute;
+    top: 14%;
+    left: 48%;
+    max-width: 12%;
+}
+
+/* ---------- DEPOSIT WITHDRAW PAGE ----------- */
+
+.blurred {
+    filter: blur(2px);
+}
+
+.operations-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    width: 30vw;
+    height: 36vh;
+    margin-top: -18vh;
+    margin-left: -15vw;
+    border-radius: 24px;
+    z-index: 1;
+}
+
+.operations-container .profile-panel {
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    box-shadow: 0px 0px 16px 100vw rgba(0,0,0,0.09);
+}
+
+
+.operations-container .profile-panel .details-container {
+   margin-top: 0px;
+}
+
+.operations-container .btn-container.fullwidth {
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.operations-container .profile-panel .details-container article {
+    margin-top: 0px;
+    text-align: left;
+}
+
+.operations-container .profile-panel .details-container article table {
+    width: 100%;
+}
+
+.operations-container .profile-panel .details-container article table tr {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px;
+    border-top: 0px;
+}
+
+.operations-container .profile-panel .details-container .details {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.operations-container .profile-panel .details-container .details .card-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
+.operations-container .profile-panel .details-container .details .card-detail input, select {
+    width: 100%;
+    padding: 10px;
+    background: #c6d0f03c;
+    border: none;
+    border-radius: 8px;
+    color: #3C53CF;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.operations-container .profile-panel .details-container .details .card-detail input:focus, select:focus {
+    width: 100%;
+    padding: 10px;
+    background: #c6d0f0;
+    border: none;
+    border-radius: 8px;
+    color: #3C53CF;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/* ---------- TRANSFER PAGE ------------- */
+
+.operations-container.transfer{
+    height: 44vh;
+    margin-top: -22vh;
+}
+
+/* ---------- ADD ACCOUNT PAGE ------------- */
+
+.operations-container.add-account {
+    height: 34vh;
+    margin-top: -17vh;
+}
+
+/* ---------- ADD RECIPIENT PAGE ------------- */
+
+.operations-container.add-recipient {
+    height: 44vh;
+    margin-top: -22vh;
+}
+
+/* ---------- MEDIA QUERIES ------------- */
+
+@media only screen and (max-width: 1024px) {
+
+    /* Homepage */
+    .card .content {
+        justify-content: flex-start;
+        gap: 20px;
+    }
+
+    .card .content .card-details-container {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* Profile */
+    .profile-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        min-height: auto;
+    }
+
+    .profile-panel {
+        max-width: 100%;
+    }
+
+    .profile-panel .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .account-container {
+        padding: 80px 40px;
+    }
+}
+
+
+@media only screen and (max-width: 680px) {
+    .hide-mobile {
+        display: none;
+    }
+    
+    /* Homepage */
+    h1 {
+        font-size: 24px;
+    }
+
+    .homepage .container {
+        padding-top: 40px;
+        padding-bottom: 100px;
+    }
+
+    .header {
+        justify-content: space-between;
+    }
+
+    .avatar {
+        width: 100%;
+        max-width: 100%;
+        height: 260px;
+        background-position: center;
+    }
+
+    .card {
+        margin-top: 40px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card .content .card-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Profile */
+    .profile-panel .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-panel .details-container .details {
+        flex-wrap: wrap;
+    }
+
+    .account-container .table tr th:last-child {
+        display: none;
+    }
+}

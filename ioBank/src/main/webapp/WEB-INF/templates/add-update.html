@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javabank</title>
+    <link rel="stylesheet" href="/javabank/style/style.css" type="text/css">
+</head>
+<body>
+
+<div class="edit-container">
+    <div class="profile-panel">
+        <div class="profile-header">
+            <div class="avatar"
+                 th:style="'background-image: url(\'' + '/javabank/assets/profile_pictures/' + ${customer.photoURL} + '\')'"></div>
+        </div>
+
+        <div class="edit-container">
+            <form class="details-container" th:object="${customer}" th:action="@{/customer/}" th:method="post"
+                  enctype="multipart/form-data" accept-charset="UTF-8">
+                <article>
+                    <h3>Personal details</h3>
+                    <div class="details">
+                        <div class="card-detail">
+                            <label>First Name</label>
+                            <input type="text" th:field="*{firstName}" pattern=".*\S.*"
+                                   title="Please provide a first name."
+                                   required>
+                        </div>
+                        <div class="card-detail">
+                            <label>Last Name</label>
+                            <input type="text" th:field="*{lastName}" pattern=".*\S.*"
+                                   title="Please provide a last name."
+                                   required>
+                        </div>
+                        <div class="card-detail">
+                            <label>Phone number</label>
+                            <input type="tel" th:field="*{phone}" pattern="[0-9]{9}"
+                                   title="Please provide a valid 9-digit phone number." required>
+                        </div>
+                        <div class="card-detail">
+                            <label>Email</label>
+                            <input type="email" th:field="*{email}" title="Please provide a valid email address."
+                                   required>
+                        </div>
+                        <div class="card-detail upload-photo-container">
+                        <div class="card-detail">
+                            <label>Upload new photo</label>
+                            <input type="file" name="photo"/>
+                            <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+                        </div>
+                    </div>
+                    </div>
+
+                    <input type="hidden" th:field="*{id}"/>
+
+                </article>
+                <article>
+                    <div class="btn-container fullwidth">
+                        <button type="submit" class="btn CTA">Save Changes</button>
+                        <a href="/javabank/" class="btn">Cancel</a>
+                    </div>
+                </article>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
